@@ -26,7 +26,7 @@ public:
 
 template <typename Type>
 Simple_tree<Type>::Simple_tree( Type const &obj, Simple_tree *p ):
-    element( obj ), parent_node( p ) {  /* Empty constructor */ }
+    element( obj ), parent_node( p ) {}
 
 template <typename Type>
 Type Simple_tree<Type>::retrieve() const {

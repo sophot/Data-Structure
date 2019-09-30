@@ -2,8 +2,10 @@
 #define LISTNODE_H
 
 #include <iostream>
+#include <string>
 
 using namespace std;
+
 template<typename NODETYPE> class List;
 
 template<typename NODETYPE>
@@ -25,7 +27,7 @@ template<typename NODETYPE>
                 return next;
             }
 
-            void setNext(const Node<NODETYPE>* n){
+            void setNext(Node<NODETYPE>* n){
                 next = n;
             }
     };

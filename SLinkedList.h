@@ -1,5 +1,6 @@
 #ifndef LIST_H
 #define LIST_H
+
 #include "Node.h"
 
 template<typename Type>
@@ -21,27 +22,28 @@ template<typename Type>
             Type back() const;
             Node<Type>* getHead() const;
             Node<Type>* getTail() const;
-            // int count(const Type&) const;
 
             void addFront(const Type&);
             void addBack(const Type&);
             Type removeFront();
+            Type removeBack();  //haven't implemented yet
             void showList() const;
     };
 
 template<typename Type>
     SLinkedList<Type>::~SLinkedList(){
         if(!isEmpty()){
-            cout << "Destructor is deleting nodes ...\n";
+            cout << "\nDestructor is deleting nodes ...\n";
             Node<Type>* currentPtr = head;
             Node<Type>* tempPtr = NULL;
 
             while(currentPtr != NULL){
                 tempPtr = currentPtr;
-                cout << tempPtr->getData() << endl;
+                // cout << tempPtr->getData() << endl;
                 currentPtr = currentPtr->getNext();
                 delete tempPtr;
             }
+            cout << "Done!\n";
         }
     }
 
@@ -51,10 +53,13 @@ template<typename Type>
 template<typename Type>
     int SLinkedList<Type>::size() const{
         int c = 0;
-        Node<Type>* temp = head;
-        while(temp != tail){
+        // Node<Type>* temp = head;
+        // while(temp != tail){
+        //     c++;
+        //     temp = temp->getNext();
+        // }
+        for(Node<Type>* tmp = head; tmp != NULL; tmp = tmp->getNext()){
             c++;
-            temp = temp->getNext();
         }
         return c;
     }
@@ -141,7 +146,7 @@ template<typename Type>
                 cout << currentPtr->getData() << ' ';
                 currentPtr = currentPtr->getNext();
             }
-            cout << endl;
+            cout << "\n\n";
         }
 
 #endif

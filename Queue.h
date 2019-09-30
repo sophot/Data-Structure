@@ -6,9 +6,10 @@
 template<typename Type>
 class Queue{
     private:
-        SLinkedList<Type> list;
+        SLinkedList<Type>* list;
     public: 
         Queue();
+        ~Queue();
         bool empty() const;
         Type front() const;
         void push(const Type&);
@@ -17,31 +18,37 @@ class Queue{
 };
 
 template<typename Type>
-Queue<Type>::Queue(){}
+Queue<Type>::Queue():
+    list(new SLinkedList<Type>()){}
+
+template<typename Type>
+Queue<Type>::~Queue(){
+    list->~SLinkedList();
+}
 
 template<typename Type>
     bool Queue<Type>::empty() const{
-        return list.isEmpty();
+        return list->isEmpty();
     }
 
 template<typename Type>
     Type Queue<Type>::front() const{
-        return list.front();
+        return list->front();
     }
 
 template<typename Type>
     void Queue<Type>::push(const Type& newData){
-        list.addBack(newData);
+        list->addBack(newData);
     }
 
 template<typename Type>
     Type Queue<Type>::pop(){
-        return list.removeFront();
+        return list->removeFront();
     }
 
 template<typename Type>
     void Queue<Type>::showList() const{
-        list.showList();
+        list->showList();
     }
 
 #endif
