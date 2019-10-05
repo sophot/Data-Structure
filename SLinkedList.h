@@ -27,9 +27,12 @@ template<typename Type>
             void addBack(const Type&);
             Type removeFront();
             Type removeBack();  //haven't implemented yet
+            void remove(Type);
             void showList() const;
-    };
+    }; //End of Interface//
 
+
+//*****************************************************************//
 template<typename Type>
     SLinkedList<Type>::~SLinkedList(){
         if(!isEmpty()){
@@ -125,13 +128,46 @@ template<typename Type>
     Type SLinkedList<Type>::removeFront(){
         if(!isEmpty()){
             Node<Type>* tempPtr = head;
-            int value = head->getData();
+            Type value = head->getData();
             head = head->getNext();
             delete tempPtr;
             return value;
         }else{
-            return -1;
+            return 0;
         }
+    }
+
+template<typename Type>
+Type SLinkedList<Type>::removeBack(){
+    if(isEmpty()){
+        return 0;
+    }
+
+    Node<Type> * tmp = this->getHead();
+    while(tmp->getNext() != getTail()){
+        tmp = tmp->getNext();
+    }
+    this->tail = tmp;
+    delete tmp->getNext();
+}
+
+template<typename Type>
+    void SLinkedList<Type>::remove(Type e){
+        Node<Type>* element = new Node<Type>(e);
+        if(element == getHead()){
+            this->removeFront();
+        }
+
+        Node<Type> *tmp = getHead();
+        while(tmp->getNext() != element){
+            tmp = tmp->getNext();
+        }
+
+        Node<Type> *toDel = tmp->getNext();
+
+        tmp->setNext(toDel->getNext());
+        
+        delete toDel;
     }
 
 template<typename Type>

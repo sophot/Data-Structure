@@ -1,5 +1,6 @@
+#include <list>
 
-#include "Stack.h"
+#include "SimpleTree.h"
 
 int main(){
 

@@ -15,8 +15,10 @@ class Queue{
         void push(const Type&);
         Type pop();
         void showList() const;
-};
+}; //End of Interface//
 
+
+//*****************************************************************//
 template<typename Type>
 Queue<Type>::Queue():
     list(new SLinkedList<Type>()){}

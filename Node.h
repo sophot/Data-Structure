@@ -6,31 +6,42 @@
 
 using namespace std;
 
-template<typename NODETYPE> class List;
+template<typename Type>class SLinkedList;
 
-template<typename NODETYPE>
+template<typename Type>
     class Node{
         private:
-            Node<NODETYPE>* next;
-            NODETYPE data;
+            Node<Type>* next;
+            Type data;
 
         public:
-            friend class List<NODETYPE>;
+            friend class SLinkedList<Type>;
+            Node(Type);
+            Type getData() const;
+            Node<Type>* getNext();
+            void setNext(Node<Type>*);
             
-            Node(NODETYPE _data):  data(_data), next(NULL){}
+    };  //end of Interface//
 
-            NODETYPE getData() const {
-                return data;
-            }
 
-            Node<NODETYPE>* getNext(){
-                return next;
-            }
+//*****************************************************************//
+template<typename Type>
+        Node<Type>::Node(Type _data):  data(_data), next(NULL){}
 
-            void setNext(Node<NODETYPE>* n){
-                next = n;
-            }
-    };
+template<typename Type>
+    Type Node<Type>::getData() const {
+        return data;
+    }
+
+template<typename Type>
+    Node<Type>* Node<Type>::getNext(){
+    return next;
+}
+
+template<typename Type>
+    void Node<Type>::setNext(Node<Type>* n){
+    next = n;
+}
 
 
 #endif

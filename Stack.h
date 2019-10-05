@@ -17,8 +17,9 @@ public:
     Type pop();
     Type top() const;
     void showStack() const;
-};
+};  //End of Interface//
 
+//*****************************************************************//
 template<typename Type>
 Stack<Type>::Stack():
     list(new SLinkedList<Type>()) {}
