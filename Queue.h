@@ -12,8 +12,8 @@ class Queue{
         ~Queue();
         bool empty() const;
         Type front() const;
-        void push(const Type&);
-        Type pop();
+        void enqueue(const Type&);
+        Type dequeue();
         void showList() const;
 }; //End of Interface//
 
@@ -39,12 +39,12 @@ template<typename Type>
     }
 
 template<typename Type>
-    void Queue<Type>::push(const Type& newData){
+    void Queue<Type>::enqueue(const Type& newData){
         list->addBack(newData);
     }
 
 template<typename Type>
-    Type Queue<Type>::pop(){
+    Type Queue<Type>::dequeue(){
         return list->removeFront();
     }
 
