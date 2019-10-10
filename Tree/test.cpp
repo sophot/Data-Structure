@@ -3,7 +3,7 @@
 
 int main(){
 
-    BinarySearchTree<int> *bst = new BinarySearchTree<int>();
+    BinarySearchTree *bst = new BinarySearchTree();
     bst->insert(45);
     bst->insert(36);
     bst->insert(14);

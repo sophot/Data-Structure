@@ -7,27 +7,26 @@
 
 using namespace std;
 
-template <typename Type> 
 class BinarySearchNode {
     private:
-        Type element;
-        BinarySearchNode<Type> *left_tree;
-        BinarySearchNode<Type> *right_tree;
+        int element;
+        BinarySearchNode *left_tree;
+        BinarySearchNode *right_tree;
         bool hasOnlyOneChild() const;
     public:
-        BinarySearchNode( const Type& );
-        Type retrieve() const;  
-        BinarySearchNode<Type> *left() const;  
-        BinarySearchNode<Type> *right() const;  
+        BinarySearchNode( const  int& );
+        int retrieve() const;  
+        BinarySearchNode *left() const;  
+        BinarySearchNode *right() const;  
         bool empty() const;  
         bool is_leaf() const;  
-        Type front() const;  
-        Type back() const;  
+        int front() const;  
+        int back() const;  
         int size() const;  
         int height() const;  
-        bool find(const Type&) const;
-        void insert(BinarySearchNode*&, const Type&);
-        void erase(BinarySearchNode*& , const Type&);
+        bool find(const  int&) const;
+        void insert(BinarySearchNode*&, const int&);
+        void erase(BinarySearchNode*& , const int&);
         void clear();
             //PRINT TREE//
         void preOrderPrint();
@@ -36,45 +35,45 @@ class BinarySearchNode {
         void breadthFirstPrint();
 };
 
-template<typename Type>
-bool BinarySearchNode<Type>::hasOnlyOneChild() const{
+
+bool BinarySearchNode::hasOnlyOneChild() const{
     return ((left()==0 && right() != 0) || (left()!=0 && right()==0));
 }
 
-template<typename Type>
-BinarySearchNode<Type>::BinarySearchNode(const Type& data){
+
+BinarySearchNode::BinarySearchNode(const  int& data){
     element = data;
     left_tree = NULL;
     right_tree = NULL;
 }
 
-template<typename Type>
-Type BinarySearchNode<Type>::retrieve() const{
+
+ int BinarySearchNode::retrieve() const{
     return element;
 }
 
-template<typename Type>
-BinarySearchNode<Type>* BinarySearchNode<Type>::left() const{
+
+BinarySearchNode* BinarySearchNode::left() const{
     return left_tree;
 }
 
-template<typename Type>
-BinarySearchNode<Type>* BinarySearchNode<Type>::right() const{
+
+BinarySearchNode* BinarySearchNode::right() const{
     return right_tree;
 }
 
-template<typename Type>
-bool BinarySearchNode<Type>::empty() const{
+
+bool BinarySearchNode::empty() const{
     return this == 0;
 }
 
-template<typename Type>
-bool BinarySearchNode<Type>::is_leaf() const{
+
+bool BinarySearchNode::is_leaf() const{
     return ((left() == NULL) && (right() == NULL));
 }
 
-template<typename Type>
-Type BinarySearchNode<Type>::front() const{
+
+ int BinarySearchNode::front() const{
         if(left() == 0){
             return retrieve();
         }else{
@@ -82,8 +81,8 @@ Type BinarySearchNode<Type>::front() const{
         }
 }
 
-template<typename Type>
-Type BinarySearchNode<Type>::back() const{
+
+ int BinarySearchNode::back() const{
     if(right() == 0){
         return retrieve();
     }else{
@@ -91,24 +90,24 @@ Type BinarySearchNode<Type>::back() const{
     }
 }
 
-template<typename Type>
-int BinarySearchNode<Type>::size() const{
+
+int BinarySearchNode::size() const{
     if(!empty()){
         return 1 + left()->size() + right()->size();
     }
     return 0;
 }
 
-template<typename Type>
-int BinarySearchNode<Type>::height() const{
+
+int BinarySearchNode::height() const{
     if(!empty()){
         return 1 + std::max(left()->height(), right()->height());
     }
     return -1;
 }
 
-template<typename Type>
-bool BinarySearchNode<Type>::find(const Type& data) const{
+
+bool BinarySearchNode::find(const  int& data) const{
     if(empty()){
         return false;
     }
@@ -121,8 +120,8 @@ bool BinarySearchNode<Type>::find(const Type& data) const{
     }
 }
 
-template<typename Type>
-void BinarySearchNode<Type>::insert(BinarySearchNode *&ptr, const Type& data){
+
+void BinarySearchNode::insert(BinarySearchNode *&ptr, const  int& data){
     if(ptr == NULL){
         ptr = new BinarySearchNode(data);
     }else{
@@ -136,9 +135,9 @@ void BinarySearchNode<Type>::insert(BinarySearchNode *&ptr, const Type& data){
     WHEN NOT LEAF -> WILL ACCESS NULLPTR AT LAST ELSE
     if(this->is_leaf()){
         if(data < retrieve()){
-            left_tree = new BinarySearchNode<Type>(data);
+            left_tree = new BinarySearchNode(data);
         }else if (data > retrieve()){
-            right_tree = new BinarySearchNode<Type>(data);
+            right_tree = new BinarySearchNode(data);
         }
     }else{
         (data < retrieve())? left()->insert(data): right()->insert(data);
@@ -146,8 +145,8 @@ void BinarySearchNode<Type>::insert(BinarySearchNode *&ptr, const Type& data){
 */
 }
 
-template<typename Type>
-void BinarySearchNode<Type>::erase(BinarySearchNode*& ptr, const Type& data){
+
+void BinarySearchNode::erase(BinarySearchNode*& ptr, const  int& data){
     if(ptr == NULL){
         return;     //data is not in the tree
     }
@@ -157,11 +156,11 @@ void BinarySearchNode<Type>::erase(BinarySearchNode*& ptr, const Type& data){
         right()->erase(right_tree, data);
     }else{     //data found
         if(is_leaf()){  //data is at leaf assign NULL to parent
-            BinarySearchNode<Type>* tmp = ptr;
+            BinarySearchNode* tmp = ptr;
             ptr = NULL;
             delete tmp;
         }else if(hasOnlyOneChild()){  //
-            BinarySearchNode<Type>* tmp = ptr;
+            BinarySearchNode* tmp = ptr;
             if(tmp->right() != 0){
                 ptr = tmp->right();
             }else{
@@ -179,8 +178,8 @@ void BinarySearchNode<Type>::erase(BinarySearchNode*& ptr, const Type& data){
     }
 }
 
-template<typename Type>
-void BinarySearchNode<Type>::clear(){
+
+void BinarySearchNode::clear(){
     if(!empty()){
         left()->clear();
         right()->clear();
@@ -189,37 +188,37 @@ void BinarySearchNode<Type>::clear(){
 }
 
 //PRINT TREE//
-template<typename Type>
-void BinarySearchNode<Type>::preOrderPrint(){
+
+void BinarySearchNode::preOrderPrint(){
     if(!empty()){
         cout << retrieve() << ' ';
         left()->preOrderPrint();
         right()->preOrderPrint();
     }
 }
-template<typename Type>
-void BinarySearchNode<Type>::inOrderPrint(){
+
+void BinarySearchNode::inOrderPrint(){
     if(!empty()){
         left()->inOrderPrint();
         cout << retrieve() << ' ';
         right()->inOrderPrint();
     }
 }
-template<typename Type>
-void BinarySearchNode<Type>::postOrderPrint(){
+
+void BinarySearchNode::postOrderPrint(){
     if(!empty()){
         left()->postOrderPrint();
         right()->postOrderPrint();
         cout << retrieve() << ' ';
     }
 }
-template<typename Type>
-void BinarySearchNode<Type>::breadthFirstPrint(){
+
+void BinarySearchNode::breadthFirstPrint(){
     if(!empty()){
-        Queue<BinarySearchNode<Type> *> Q;
+        Queue<BinarySearchNode *> Q;
         Q.enqueue(this);
         while(!Q.empty()){
-            BinarySearchNode<Type>* tmp = Q.dequeue();
+            BinarySearchNode* tmp = Q.dequeue();
             cout << tmp->retrieve() << ' ';
             if(tmp->left() != 0)
                 Q.enqueue(tmp->left());

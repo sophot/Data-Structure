@@ -3,22 +3,21 @@
 
 #include "BinarySearchNode.h"
 
-template<typename Type>
 class BinarySearchTree{
 private:
-    BinarySearchNode<Type>* root;
+    BinarySearchNode* root;
 
 public:
     BinarySearchTree();
     ~BinarySearchTree();
     bool empty() const;  
-    Type front() const;  
-    Type back() const;  
+    int front() const;  
+    int back() const;  
     int size() const;  
     int height() const;  
-    bool find(const Type&) const;
-    void insert(const Type&);
-    void erase(const Type&);
+    bool find(const int&) const;
+    void insert(const int&);
+    void erase(const int&);
 
         //PRINT TREE//
     void preOrderPrint();
@@ -27,66 +26,69 @@ public:
     void breadthFirstPrint();
 };
 
-template<typename Type>
-BinarySearchTree<Type>::BinarySearchTree(){
+
+BinarySearchTree::BinarySearchTree(){
     root = NULL;
 }
 
-template<typename Type>
-bool BinarySearchTree<Type>::empty() const{
+BinarySearchTree::~BinarySearchTree(){
+    root->clear();
+}
+
+
+bool BinarySearchTree::empty() const{
     return root->empty();
 }
 
-template<typename Type>
-Type BinarySearchTree<Type>::front() const{
+
+int BinarySearchTree::front() const{
     return root->front();
 }
 
-template<typename Type>
-Type BinarySearchTree<Type>::back() const{
+
+int BinarySearchTree::back() const{
     return root->back();
 }
 
-template<typename Type>
-int BinarySearchTree<Type>::size() const{
+
+int BinarySearchTree::size() const{
     return root->size();
 }
 
-template<typename Type>
-int BinarySearchTree<Type>::height() const{
+
+int BinarySearchTree::height() const{
     return root->height();
 }
 
-template<typename Type>
-bool BinarySearchTree<Type>::find(const Type& data) const{
+
+bool BinarySearchTree::find(const int& data) const{
     return root->find(data);
 }
 
-template<typename Type>
-void BinarySearchTree<Type>::insert(const Type& data){
+
+void BinarySearchTree::insert(const int& data){
     root->insert(root, data);
 }
 
-template<typename Type>
-void BinarySearchTree<Type>::erase(const Type& data){
+
+void BinarySearchTree::erase(const int& data){
     root->erase(root, data);
 }
 
 //PRINT TREE//
-template<typename Type>
-void BinarySearchTree<Type>::preOrderPrint(){
+void BinarySearchTree::preOrderPrint(){
     root->preOrderPrint();
 }
-template<typename Type>
-void BinarySearchTree<Type>::inOrderPrint(){
+
+void BinarySearchTree::inOrderPrint(){
     root->inOrderPrint();
 }
-template<typename Type>
-void BinarySearchTree<Type>::postOrderPrint(){
+
+void BinarySearchTree::postOrderPrint(){
     root->postOrderPrint();
 }
-template<typename Type>
-void BinarySearchTree<Type>::breadthFirstPrint(){
+
+void BinarySearchTree::breadthFirstPrint(){
     root->breadthFirstPrint();
 }
 
