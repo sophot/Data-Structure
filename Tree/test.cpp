@@ -2,21 +2,21 @@
 #include "BinarySearchTree.h"
 
 int main(){
-    
-    BinarySearchTree<int> *bst = new BinarySearchTree<int>(31);
-    bst->insert(bst, 45);
-    bst->insert(bst, 36);
-    bst->insert(bst, 14);
-    bst->insert(bst, 52);
-    bst->insert(bst, 42);
-    bst->insert(bst, 6);
-    bst->insert(bst, 21);
-    bst->insert(bst, 73);
-    bst->insert(bst, 47);
-    bst->insert(bst, 26);
-    bst->insert(bst, 37);
-    bst->insert(bst, 33);
-    bst->insert(bst, 8);
+
+    BinarySearchTree<int> *bst = new BinarySearchTree<int>();
+    bst->insert(45);
+    bst->insert(36);
+    bst->insert(14);
+    bst->insert(52);
+    bst->insert(42);
+    bst->insert(6);
+    bst->insert(21);
+    bst->insert(73);
+    bst->insert(47);
+    bst->insert(26);
+    bst->insert(37);
+    bst->insert(33);
+    bst->insert(8);
 
     bst->inOrderPrint();
     cout << endl;
@@ -24,7 +24,6 @@ int main(){
     // bst->erase(bst, 14);
     
     bst->breadthFirstPrint();
-    cout << endl;
 
     return 0;
 }
