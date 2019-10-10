@@ -33,6 +33,12 @@ BinarySearchTree<Type>::BinarySearchTree(){
 }
 
 template<typename Type>
+BinarySearchTree<Type>::~BinarySearchTree(){
+    root->clear();
+    cout << "CLEARED!!!" << endl;
+}
+
+template<typename Type>
 bool BinarySearchTree<Type>::empty() const{
     return root->empty();
 }
