@@ -31,12 +31,23 @@ BinarySearchTree::BinarySearchTree(){
     root = NULL;
 }
 
+<<<<<<< HEAD
 BinarySearchTree::~BinarySearchTree(){
     root->clear();
 }
 
 
 bool BinarySearchTree::empty() const{
+=======
+template<typename Type>
+BinarySearchTree<Type>::~BinarySearchTree(){
+    root->clear();
+    cout << "CLEARED!!!" << endl;
+}
+
+template<typename Type>
+bool BinarySearchTree<Type>::empty() const{
+>>>>>>> e710145ab92483146c992aa25db038151e8f7ed2
     return root->empty();
 }
 
