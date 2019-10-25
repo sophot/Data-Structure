@@ -13,7 +13,7 @@ public:
     bool empty() const;  
     int front() const;  
     int back() const;  
-    int size() const;  
+    int size() const; 
     int height() const;  
     bool find(const int&) const;
     void insert(const int&);
@@ -79,15 +79,12 @@ void BinarySearchTree::erase(const int& data){
 void BinarySearchTree::preOrderPrint(){
     root->preOrderPrint();
 }
-
 void BinarySearchTree::inOrderPrint(){
     root->inOrderPrint();
 }
-
 void BinarySearchTree::postOrderPrint(){
     root->postOrderPrint();
 }
-
 void BinarySearchTree::breadthFirstPrint(){
     root->breadthFirstPrint();
 }
